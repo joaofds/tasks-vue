@@ -1,27 +1,33 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import LoginView from "../views/LoginView.vue";
+import DashboardView from "../views/DashboardView.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: import.meta.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView
+      path: "/",
+      name: "login",
+      component: LoginView,
     },
     {
-      path: '/about',
-      name: 'about',
+      path: "/dashboard",
+      name: "dashboard",
+      component: DashboardView,
+    },
+    {
+      path: "/about",
+      name: "about",
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    }
-  ]
-})
+      component: () => import("../views/AboutView.vue"),
+    },
+  ],
+});
 
-export default router
+export default router;
