@@ -11,6 +11,13 @@ const router = new VueRouter({
   routes: [
     {
       path: "/",
+      name: "root",
+      redirect: (to) => {
+        return "login";
+      },
+    },
+    {
+      path: "/login",
       name: "login",
       component: LoginView,
     },
