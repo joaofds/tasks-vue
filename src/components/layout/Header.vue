@@ -1,13 +1,45 @@
 <script>
+export default {
+    name: 'Header',
+    data() {
+        return {
+
+        }
+    }
+}
 
 </script>
 
 <template>
-    <div id="header">
-        <h1>HEADER</h1>
-    </div>
+    <header>
+        <div class="user-info">
+            <img src="@/assets/images/avatar.png" alt="avatar">
+            <div>Eduardo Pereira da Costa<div class="role">Front-end Developer</div></div>
+        </div>
+    </header>
 </template>
 
 <style lang="stylus" scoped>
+header
+    width: 100vw
+    min-height: 83px
+    display: flex
+    justify-content: end
 
+header > div
+    display: flex
+    align-items: center
+    justify-content: end
+
+header img
+    max-height: 55px
+
+header > div > div
+    margin: 0 0.5em 0 0.5em
+    font-weight: 600
+    line-height: 16px
+    color: #283848
+
+.role
+    color: #2693FF
 </style>
