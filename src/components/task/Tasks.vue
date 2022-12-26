@@ -1,0 +1,196 @@
+<script>
+export default {
+    name: 'Tasks',
+    data() {
+        return {
+
+        }
+    }
+}
+
+</script>
+
+<template>
+    <div class="wrapp">
+        <div class="left-content">
+            <div class="categories">
+                <p>Categorias</p>
+                <ul>
+                    <a href="#" class="active"><li>Todas</li></a>
+                    <a href="#">
+                        <li>
+                            Urgentes 
+                            <span class="circle pink">
+                                <span class="couting">5</span>
+                            </span>
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li>
+                            Importantes
+                            <span class="circle yellow">
+                                <span class="couting">2</span>
+                            </span>
+                        </li>
+                    </a>
+                    <a href="#"><li>Outras</li></a>
+                    <a href="#"><li>Finalizadas</li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="right-content">
+            <div class="info-text">
+                <h1>Minhas Tarefas</h1>
+                <p>Olá <span>Eduardo Pereira</span>, você tem <span>4 tarefas</span> pendentes.</p>
+                <div class="input-icon">
+                    <font-awesome-icon icon="search" />
+                    <input type="text" class="input-field" placeholder="Buscar Tarefas">
+                </div>
+            </div>
+        </div>
+        <button type="button" class="float-button"><font-awesome-icon icon="plus" /></button>
+    </div>
+</template>
+
+<style lang="stylus">
+primary = #2693FF
+success = #0ED984
+black = #283848
+pink = #FF2E79
+yellow = #FFC42E
+default = #A6C1D2
+
+.pink
+    background-color: pink
+
+.yellow
+    background-color: yellow
+a
+    text-decoration: none
+    
+.wrapp
+    display: flex
+
+// CONTEUDO DO LADO ESQUERDO
+.left-content
+    margin: 0 auto
+    width: 277px
+    height: 100vh
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: #F4FBFF
+
+.left-content p
+    font-size: 18px
+    font-weight: 500
+    margin-bottom: 2em
+
+.categories
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+
+.categories li
+    font-size: 16px
+    padding: 12px 0 12px 4px
+    list-style-type: none
+    color: black
+
+.categories li:before
+    content: url("../../assets/images/greaterthan.svg")
+    margin:0 10px 0 -15px
+
+.circle
+    width: 20px
+    height: 20px
+    border-radius: 50%
+    color: #fff
+    position: absolute
+    margin-left: 0.3em
+
+.couting
+    font-size: 14px
+    font-weight: 900
+    display: flex
+    align-items: center
+    justify-content: center
+
+.categories a li
+    font-weight: 500
+    color: black
+
+.categories a:visited
+    color: black
+
+.categories a:hover li
+    color: primary
+
+// CONTEUDO DO LADO DIREITO
+.right-content
+    width: 80vw
+    background-color: #E9F4FB
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-wrap: wrap
+
+.right-content h2
+.right-content span
+    font-weight: 600
+
+.right-content p
+    font-size: 18px
+    margin-bottom: 1.5em
+
+.info-text span
+    color: primary
+
+.right-content input
+    width: 633px
+    height: 51px
+    border-radius: 5px
+    padding: 8px
+    font-size: 25px
+    background-color: #fff
+    border: #BFDAEB 2px solid
+
+.right-content input:focus
+    outline: primary 2px solid
+
+::placeholder
+    font-size: 18px
+    color: default
+
+.input-icon svg
+    position: absolute
+    right: 0.3em
+    bottom: 0.3em
+    font-size: 32px
+    color: default
+    z-index: 9000
+
+.float-button
+    width: 78px
+    height: 78px
+    border-radius: 39px
+    position: absolute
+    z-index: 9000
+    background-color: success
+    border: none
+    cursor: pointer
+    right: 2em
+    bottom: 2em
+
+.float-button:active
+    background-color: #1AD18F
+
+.float-button svg
+    color: #fff
+    font-size: 32px
+
+.active
+    background-color: primary
+
+</style>

@@ -25,6 +25,8 @@ header
     min-height: 83px
     display: flex
     justify-content: end
+    background-color: #fff
+    
 
 header > div
     display: flex
