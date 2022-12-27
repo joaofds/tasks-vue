@@ -1,5 +1,7 @@
 <script>
 import Task from '@/components/task/Task.vue'
+import Bus from "@/bus"
+
 
 export default {
     name: 'Tasks',
@@ -10,6 +12,11 @@ export default {
     data() {
         return {
 
+        }
+    },
+    methods: {
+        showModal() {
+            Bus.$emit('showModal')
         }
     }
 }
@@ -59,7 +66,7 @@ export default {
                 </template>
             </div>
         </div>
-        <button type="button" class="float-button"><font-awesome-icon icon="plus" /></button>
+        <button type="button" @click="showModal" class="float-button"><font-awesome-icon icon="plus" /></button>
     </div>
 </template>
 
@@ -161,14 +168,6 @@ a
 .right-content input
     width: 633px
     height: 51px
-    border-radius: 5px
-    padding: 8px
-    font-size: 25px
-    background-color: #fff
-    border: #BFDAEB 2px solid
-
-.right-content input:focus
-    outline: primary 2px solid
 
 ::placeholder
     font-size: 18px

@@ -46,7 +46,7 @@
 
                 <div class="form-display">
                     <router-link to="/dashboard">
-                        <button type="button">Entrar</button>
+                        <button type="submit">Entrar</button>
                     </router-link>
                 </div>
 
@@ -98,38 +98,13 @@
     font-weight: 600
     margin-bottom: 2em
 
-.form-display
-    margin-bottom: 0.8em
-
-label
-    display: block
-    font-weight: 400
-    margin-bottom: 0.2em
-
 input
     width: 365px
     height: 55px
-    border-radius: 5px
-    padding: 8px
-    font-size: 25px
-    background-color: #fff
-    border: #BFDAEB 2px solid
-
-input:focus
-    outline: #2693FF 2px solid
 
 button
     width: 365px
     height: 55px
-    font-size: 18px
-    color: #fff
-    border: none
-    border-radius: 5px
-    background-color: #1AD18F
-    cursor: pointer
-
-button:active 
-    border: #18a06e 2px solid
 
 a:link
     color: #2693FF
