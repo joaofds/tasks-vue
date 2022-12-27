@@ -47,7 +47,7 @@ export default {
         <div class="right-content">
             <div class="info-text">
                 <h1>Minhas Tarefas</h1>
-                <p>Olá <span>Eduardo Pereira</span>, você tem <span>4 tarefas</span> pendentes.</p>
+                <p>Olá <span>João Ferreira</span>, você tem <span>4 tarefas</span> pendentes.</p>
                 <div class="search-content">
                     <font-awesome-icon icon="search" />
                     <input type="text" class="input-field" placeholder="Buscar Tarefas">

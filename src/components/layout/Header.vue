@@ -14,7 +14,7 @@ export default {
     <header>
         <div class="user-info">
             <img src="@/assets/images/avatar.png" alt="avatar">
-            <div>Eduardo Pereira da Costa<div class="role">Front-end Developer</div></div>
+            <div>João Ferreira<div class="role">Full-stack Developer</div></div>
         </div>
     </header>
 </template>
