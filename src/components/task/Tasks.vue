@@ -1,6 +1,12 @@
 <script>
+import Task from '@/components/task/Task.vue'
+
 export default {
     name: 'Tasks',
+    components: { Task },
+    props: {
+        tasks: { type: Array, required: true }
+    },
     data() {
         return {
 
@@ -42,17 +48,22 @@ export default {
             <div class="info-text">
                 <h1>Minhas Tarefas</h1>
                 <p>Olá <span>Eduardo Pereira</span>, você tem <span>4 tarefas</span> pendentes.</p>
-                <div class="input-icon">
+                <div class="search-content">
                     <font-awesome-icon icon="search" />
                     <input type="text" class="input-field" placeholder="Buscar Tarefas">
                 </div>
+            </div>
+            <div class="tasks-list">
+                <template>
+                    <Task v-for="task in tasks" :key="task.name" :task="task"></Task>
+                </template>
             </div>
         </div>
         <button type="button" class="float-button"><font-awesome-icon icon="plus" /></button>
     </div>
 </template>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 primary = #2693FF
 success = #0ED984
 black = #283848
@@ -65,6 +76,7 @@ default = #A6C1D2
 
 .yellow
     background-color: yellow
+    
 a
     text-decoration: none
     
@@ -73,7 +85,6 @@ a
 
 // CONTEUDO DO LADO ESQUERDO
 .left-content
-    margin: 0 auto
     width: 277px
     height: 100vh
     display: flex
@@ -134,7 +145,7 @@ a
     display: flex
     align-items: center
     justify-content: center
-    flex-wrap: wrap
+    flex-direction: column
 
 .right-content h2
 .right-content span
@@ -163,7 +174,10 @@ a
     font-size: 18px
     color: default
 
-.input-icon svg
+.search-content
+    margin-bottom: 2em
+
+.search-content svg
     position: absolute
     right: 0.3em
     bottom: 0.3em
@@ -189,6 +203,9 @@ a
 .float-button svg
     color: #fff
     font-size: 32px
+
+.tasks-list
+    display: inline-block
 
 .active
     background-color: primary
