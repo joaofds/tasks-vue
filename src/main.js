@@ -10,7 +10,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 library.add(fas);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
-import "./assets/main.css";
+import "./assets/css/main.css";
 
 new Vue({
   router,
