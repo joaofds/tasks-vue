@@ -60,81 +60,82 @@
 </template>
 
 <style lang="stylus" scoped>
-    .wrapp
-        display: flex
 
-    .left-side
-        width: 624px
-        height: 100vh
-        background-color: #2693FF
-        color: #fff
-        display: flex
-        align-items: center
-        justify-content: center
-    
-    .left-side .logo img
-        width: 100px
-        height: 100px
+.wrapp
+    display: flex
 
-    .left-side .content
-        line-height: 1.2
+.left-side
+    width: 624px
+    height: 100vh
+    background-color: #2693FF
+    color: #fff
+    display: flex
+    align-items: center
+    justify-content: center
 
-    .left-side .content h1
-        font-size 40px
-        letter-spacing: 2px
-        font-weight: 600
-    
-    .left-side .content h1 span
-        font-weight: 350
+.left-side .logo img
+    width: 100px
+    height: 100px
 
-    .right-side
-        width: 70vw
-        display: flex
-        align-items: center
-        justify-content: center
+.left-side .content
+    line-height: 1.2
 
-    .right-side p
-        font-weight: 600
-        margin-bottom: 2em
+.left-side .content h1
+    font-size 40px
+    letter-spacing: 2px
+    font-weight: 600
 
-    .form-display
-        margin-bottom: 0.8em
+.left-side .content h1 span
+    font-weight: 350
 
-    label
-        display: block
-        font-weight: 400
-        margin-bottom: 0.2em
+.right-side
+    width: 70vw
+    display: flex
+    align-items: center
+    justify-content: center
 
-    input
-        width: 365px
-        height: 55px
-        border-radius: 5px
-        padding: 8px
-        font-size: 25px
-        background-color: #fff
-        border: #BFDAEB 2px solid
+.right-side p
+    font-weight: 600
+    margin-bottom: 2em
 
-    input:focus
-        outline: #2693FF 2px solid
+.form-display
+    margin-bottom: 0.8em
 
-    button
-        width: 365px
-        height: 55px
-        font-size: 18px
-        color: #fff
-        border: none
-        border-radius: 5px
-        background-color: #1AD18F
-        cursor: pointer
+label
+    display: block
+    font-weight: 400
+    margin-bottom: 0.2em
 
-    button:active 
-        border: #18a06e 2px solid
+input
+    width: 365px
+    height: 55px
+    border-radius: 5px
+    padding: 8px
+    font-size: 25px
+    background-color: #fff
+    border: #BFDAEB 2px solid
 
-    a:link
-        color: #2693FF
-        text-decoration: none
+input:focus
+    outline: #2693FF 2px solid
 
-    a:visited
-        color: #2693FF
+button
+    width: 365px
+    height: 55px
+    font-size: 18px
+    color: #fff
+    border: none
+    border-radius: 5px
+    background-color: #1AD18F
+    cursor: pointer
+
+button:active 
+    border: #18a06e 2px solid
+
+a:link
+    color: #2693FF
+    text-decoration: none
+
+a:visited
+    color: #2693FF
 
 </style>
