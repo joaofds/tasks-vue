@@ -1,12 +1,17 @@
 <script>
-  export default {
+import Bus from "@/bus"
+
+export default {
     name: 'ModalDelete',
     methods: {
-      close() {
+        deleteTask() {
+            Bus.$emit('deleteTask')
+        },
+        close() {
         this.$emit('close');
-      },
+        },
     },
-  };
+};
 </script>
 
 <template>
@@ -25,7 +30,7 @@
                         <button @click="close" type="submit" class="success">
                             Cancelar
                         </button>
-                        <button type="submit" class="danger">
+                        <button @click="deleteTask" type="submit" class="danger">
                             Confirmar
                         </button>
                     </div>

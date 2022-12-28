@@ -10,14 +10,43 @@ export default {
     name: 'DashboardView',
     components: { Header, SideNav, Tasks, ModalCreate, ModalDelete },
     created() {
+        // busca tasks json no storage e atribui ao array de tasks do vue.
+        const tasks = localStorage.getItem('tasks')
+        this.tasks = JSON.parse(tasks) || []
+
+        // recebe a task do bus emitida pelo modal e insere no array.
+        Bus.$on('task', task => {
+            this.addTask(task)
+        })
+
+        // deleta uma task.
+        Bus.$on('deleteTask', task => {
+            this.taskToDelete = task
+            this.deleteTask()
+        })
+
+        // event bus que mostra modal de deleção de tarefa.
+        Bus.$on('showModalDelete', (task) => {
+            this.showModalDelete()
+        })
+
+        // event bus que mostra modal de criação de tarefa.
         Bus.$on('showModalCreate', () => {
             this.showModalCreate()
         })
     },
+    watch: {
+        // monitora this.tasks para manter o localStorage atualizado.
+        tasks() {
+            localStorage.setItem('tasks', JSON.stringify(this.tasks))
+        }
+    },
     data() {
         return {
             modalCreateVisible: false,
-            modalDeleteVisible: true,
+            modalDeleteVisible: false,
+
+            taskToDelete: null,
             tasks: [
                 { name: 'Planejar desenvolvimento do app.', category: '1', pending: true },
                 { name: 'Criar peojeto e configurar pacotes.', category: '2', pending: false },
@@ -28,6 +57,16 @@ export default {
         }
     },
     methods: {
+        addTask(task) {
+            this.tasks.push(task)
+        },
+        deleteTask() {
+            const index = this.tasks.indexOf(this.taskToDelete)
+            this.tasks.splice(index, 1)
+
+            this.closeModalDelete()
+            this.taskToDelete = null
+        },
         showModalCreate() {
             this.modalCreateVisible = true
         },

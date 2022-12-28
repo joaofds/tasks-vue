@@ -1,12 +1,37 @@
 <script>
-  export default {
+import Bus from "@/bus"
+
+export default {
     name: 'ModalCreate',
-    methods: {
-      close() {
-        this.$emit('close');
-      },
+    data() {
+        return {
+            task: {
+                name: "",
+                description: "",
+                category: null,
+                pending: true
+            },
+        }
     },
-  };
+    methods: {
+        // emite a task criada para o bus.
+        emitTask() {
+            Bus.$emit('task', this.task)
+
+            // fecha modal
+            this.close()
+
+            // limpa campos
+            // this.task.name = ""
+            // this.task.description = ""
+            // this.task.category = null
+        },
+        // acao para fechar modal
+        close() {
+            this.$emit('close');
+        },
+    },
+};
 </script>
 
 <template>
@@ -31,6 +56,7 @@
                         <div class="form-display">
                             <label for="title">Título</label>
                             <input
+                                v-model="task.name"
                                 type="text" 
                                 name="title"
                                 id="title"
@@ -40,6 +66,7 @@
                         <div class="form-display">
                             <label for="description">Descrição</label>
                             <textarea
+                                v-model="task.description"
                                 rows="4"
                             >
                             </textarea>
@@ -51,14 +78,24 @@
                     <div class="radio-itens">
                         <slot name="footer">
                             <label for="urgente">Urgente</label>
-                            <input type="radio" name="priority" id="urgente">
+                            <input
+                                v-model="task.category"
+                                type="radio" 
+                                name="priority" 
+                                value="1"
+                            >
 
                             <label for="importante">Importante</label>
-                            <input type="radio" name="priority" id="importante">
+                            <input 
+                                v-model="task.category"
+                                type="radio" 
+                                name="priority" 
+                                value="2"
+                            >
                         </slot>
                     </div>
                     <div class="buttons">
-                        <button @click="close" type="submit">
+                        <button @click="emitTask" type="submit" class="success">
                             Salvar
                         </button>
                     </div>

@@ -62,7 +62,7 @@ export default {
             </div>
             <div class="tasks-list">
                 <template>
-                    <Task v-for="task in tasks" :key="task.name" :task="task"></Task>
+                    <Task v-for="(task, index) in tasks" :key="index" :task="task"></Task>
                 </template>
             </div>
         </div>

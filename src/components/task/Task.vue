@@ -1,4 +1,6 @@
 <script>
+import Bus from "@/bus"
+
 export default {
     name: 'Task',
     props: {
@@ -9,6 +11,11 @@ export default {
             
         }
     },
+    methods: {
+        showModalDelete(task) {
+            Bus.$emit('showModalDelete', task)
+        }
+    },
     computed: {
         // returna classe de acordo com estado atual ta tarefa.
         taskStateClass() {
@@ -17,7 +24,7 @@ export default {
                 done: !this.task.pending
             }
         },
-        taskTagPriorityClass() {
+        taskTagCategoryClass() {
             return {
                 pink: this.task.category == 1,
                 yellow: this.task.category == 2
@@ -43,7 +50,7 @@ export default {
                 </label>
             </div>
             <div class="right-itens">
-                <span class="tag" :class="taskTagPriorityClass">
+                <span class="tag" :class="taskTagCategoryClass">
                     {{ task.category == 1 ? "Urgente" : task.category == 2 ? "Importante" : ''}}
                 </span>
                 <span class="dropdown">
@@ -52,7 +59,7 @@ export default {
                         <div class="list">
                             <ul>
                                 <li>Editar</li>
-                                <li>Excluir</li>
+                                <li @click="showModalDelete(task)">Excluir</li>
                             </ul>
                         </div>
                         <div class="icon"><font-awesome-icon icon="fas fa-ellipsis-v" /></div>
