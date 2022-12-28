@@ -9,12 +9,18 @@ export default {
     props: {
         tasks: { type: Array, required: true }
     },
+    watch: {
+        searchValue(value) {
+            Bus.$emit('searchValue', value)
+        }
+    },
     data() {
         return {
-
+            searchValue: ''
         }
     },
     methods: {
+        // mostra modal de cadastro de nova task
         showModalCreate() {
             Bus.$emit('showModalCreate')
         }
@@ -79,7 +85,11 @@ export default {
                 <p>Olá <span>João Ferreira</span>, você tem <span>4 tarefas</span> pendentes.</p>
                 <div class="search-content">
                     <font-awesome-icon icon="search" />
-                    <input type="text" class="input-field" placeholder="Buscar Tarefas">
+                    <input
+                        v-model="searchValue"
+                        type="text" 
+                        class="input-field" 
+                        placeholder="Buscar Tarefas">
                 </div>
             </div>
             <div class="tasks-list">

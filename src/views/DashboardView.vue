@@ -11,8 +11,8 @@ export default {
     components: { Header, SideNav, Tasks, ModalCreate, ModalDelete },
     created() {
         // busca tasks json no storage e atribui ao array de tasks do vue.
-        const tasks = localStorage.getItem('tasks')
-        this.tasks = JSON.parse(tasks) || []
+        // const tasks = localStorage.getItem('tasks')
+        // this.tasks = JSON.parse(tasks) || []
 
         // recebe a task do bus emitida pelo modal e insere no array.
         Bus.$on('task', task => {
@@ -43,6 +43,10 @@ export default {
         Bus.$on('toggleTaskState', task => {
             this.taskToggleState(task)
         })
+
+        Bus.$on('searchValue', value => {
+            this.searchValue = value
+        })
     },
     watch: {
         // monitora this.tasks para manter o localStorage atualizado.
@@ -55,6 +59,7 @@ export default {
             modalCreateVisible: false,
             modalDeleteVisible: false,
 
+            searchValue: '',
             taskToDelete: null,
             tasks: [
                 { name: 'Planejar desenvolvimento do app.', description: '', category: '1', pending: true },
@@ -92,6 +97,19 @@ export default {
             const index = this.tasks.indexOf(task)
             this.tasks[index].pending = !this.tasks[index].pending
         }
+    },
+    computed: {
+        taskFilter() {
+            let myTempTasks = this.tasks
+
+            if(this.searchValue != '' && this.searchValue) {
+                myTempTasks = myTempTasks.filter((task) => {
+                    return task.name.toUpperCase().includes(this.searchValue.toUpperCase())
+                })
+            }
+
+            return myTempTasks
+        }
     }
 }
 </script>
@@ -107,7 +125,7 @@ export default {
             <ModalDelete v-show="modalDeleteVisible" @close="closeModalDelete"></ModalDelete>
         </div>
         <div class="main">
-            <Tasks :tasks="tasks" @showModalCreate="showModalCreate" />
+            <Tasks :tasks="taskFilter" @showModalCreate="showModalCreate" />
         </div>
     </div>
 </template>
