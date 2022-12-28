@@ -5,7 +5,6 @@ export default {
     name: 'ModalCreate',
     created() {
         Bus.$on('showModalEdit', (task) => {
-            console.log(task);
             this.editTask(task)
         })
     },

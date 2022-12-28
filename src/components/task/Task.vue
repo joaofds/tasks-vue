@@ -13,18 +13,19 @@ export default {
     },
     methods: {
         showModalEdit(task) {
-            console.log(task)
             Bus.$emit('showModaledit', task)
         },
         showModalDelete(task) {
             Bus.$emit('showModalDelete', task)
+        },
+        emitTaskPendingState(task) {
+            Bus.$emit('toggleTaskState', task)
         }
     },
     computed: {
         // returna classe de acordo com estado atual ta tarefa.
         taskStateClass() {
             return {
-                pending: this.task.pending,
                 done: !this.task.pending
             }
         },
@@ -43,13 +44,16 @@ export default {
 
 <template>
     <div class="wrapp">
-        <div class="task-box">
+        <div class="task-box" :class="taskStateClass">
             <div class="task-info">
-                <input type="checkbox" :id="randomId">
+                <input 
+                    @change="emitTaskPendingState(task)"
+                    type="checkbox" 
+                    :id="randomId"
+                    :checked="!task.pending">
                 <label
                     :for="randomId"
-                    :id="randomId" 
-                    :class="taskStateClass">
+                    :id="randomId">
                     {{ task.name }}
                 </label>
             </div>
@@ -200,5 +204,12 @@ default = #E2EEF5
 
 .dropdown-content .icon svg
     color: primary
+
+.done
+    opacity: 50%
+
+.done label
+    text-decoration: line-through
+
 
 </style>

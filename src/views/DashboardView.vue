@@ -39,6 +39,10 @@ export default {
         Bus.$on('showModalCreate', () => {
             this.showModalCreate()
         })
+
+        Bus.$on('toggleTaskState', task => {
+            this.taskToggleState(task)
+        })
     },
     watch: {
         // monitora this.tasks para manter o localStorage atualizado.
@@ -83,6 +87,10 @@ export default {
         },
         closeModalDelete() {
             this.modalDeleteVisible = false
+        },
+        taskToggleState(task) {
+            const index = this.tasks.indexOf(task)
+            this.tasks[index].pending = !this.tasks[index].pending
         }
     }
 }
