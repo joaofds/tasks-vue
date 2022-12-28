@@ -109,6 +109,7 @@ black = #283848
 pink = #FF2E79
 yellow = #FFC42E
 default = #A6C1D2
+gray = #77899E
 
 .pink
     background-color: pink
@@ -135,6 +136,7 @@ a
     font-size: 18px
     font-weight: 500
     margin-bottom: 2em
+    color: black
 
 .categories
     display: flex
@@ -186,13 +188,15 @@ a
     justify-content: center
     flex-direction: column
 
-.right-content h2
+.right-content h1
 .right-content span
     font-weight: 600
+    color: black
 
 .right-content p
     font-size: 18px
     margin-bottom: 1.5em
+    color: gray
 
 .info-text span
     color: primary
@@ -203,7 +207,7 @@ a
 
 ::placeholder
     font-size: 18px
-    color: default
+    color: gray
 
 .search-content
     margin-bottom: 2em

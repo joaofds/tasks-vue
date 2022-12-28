@@ -43,6 +43,7 @@ export default {
 <style lang="stylus" scoped>
 pink = #FF4874
 success = #1AD18F
+gray = 475E78
 
 .modal-backdrop 
     position: fixed
@@ -98,6 +99,9 @@ success = #1AD18F
 
 .info-text span
     font-weight: bold
+
+.info-text p
+    color: gray
 
 .buttons
     margin-top: 1.5em

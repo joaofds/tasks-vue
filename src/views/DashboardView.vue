@@ -10,9 +10,18 @@ export default {
     name: 'DashboardView',
     components: { Header, SideNav, Tasks, ModalCreate, ModalDelete },
     created() {
+        // tasks
+        this.tasks = [
+            { name: 'Planejar desenvolvimento do app.', description: '', category: '1', pending: false },
+            { name: 'Criar peojeto e configurar pacotes.', category: '2', pending: false },
+            { name: 'Montar telas HTML/CSS.', category: '2', pending: false },
+            { name: 'Separar componentes.', pending: false }, 
+            { name: 'Fazer a lógica javascript dos componentes.', pending: false }
+        ]
+
         // busca tasks json no storage e atribui ao array de tasks do vue.
-        // const tasks = localStorage.getItem('tasks')
-        // this.tasks = JSON.parse(tasks) || []
+        const tasks = localStorage.getItem('tasks')
+        this.tasks = JSON.parse(tasks) || []
 
         // recebe a task do bus emitida pelo modal e insere no array.
         Bus.$on('task', task => {
@@ -61,13 +70,7 @@ export default {
 
             searchValue: '',
             taskToDelete: null,
-            tasks: [
-                { name: 'Planejar desenvolvimento do app.', description: '', category: '1', pending: true },
-                { name: 'Criar peojeto e configurar pacotes.', category: '2', pending: false },
-                { name: 'Montar telas HTML/CSS.', category: '2', pending: false },
-                { name: 'Separar componentes.', pending: false },
-                { name: 'Fazer a lógica javascript dos componentes.', pending: false }
-            ]
+            tasks: []
         }
     },
     methods: {
@@ -99,6 +102,7 @@ export default {
         }
     },
     computed: {
+        // filtro de busca
         taskFilter() {
             let myTempTasks = this.tasks
 

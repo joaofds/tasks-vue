@@ -129,6 +129,9 @@ export default {
 </template>
 
 <style lang="stylus" scoped>
+gray = #4E657B
+black = #283848
+
 .modal-backdrop 
     position: fixed
     top: 0
@@ -160,14 +163,17 @@ export default {
     margin-top: -2em
     display: flex
     flex-direction: column
+    color: gray
 
 .modal-header h1
     font-size: 26px
     font-weight: bold
+    color: black
 
 .modal-footer
     margin-top: -4.5em
     justify-content: space-between
+    color: gray
 
 .btn-close 
     position: absolute

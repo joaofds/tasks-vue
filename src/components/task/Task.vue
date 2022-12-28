@@ -86,6 +86,7 @@ success = #0ED984
 yellow = #FFC42E
 pink = #FF2E79
 default = #E2EEF5
+black = #283848
 
 .yellow
     background-color: yellow
@@ -106,6 +107,10 @@ default = #E2EEF5
     align-items: center
     justify-content: space-between
 
+.task-info label
+    color: black
+    font-weight: bold
+    
 .task-info
     padding: 12px
 

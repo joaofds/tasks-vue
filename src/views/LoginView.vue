@@ -60,6 +60,8 @@
 </template>
 
 <style lang="stylus" scoped>
+black = #283848
+gray = #4E657B
 
 .wrapp
     display: flex
@@ -93,10 +95,12 @@
     display: flex
     align-items: center
     justify-content: center
+    background-color: #fff
 
 .right-side p
     font-weight: 600
     margin-bottom: 2em
+    color: black
 
 input
     width: 365px
