@@ -46,7 +46,7 @@
 
                 <div class="form-display">
                     <router-link to="/dashboard">
-                        <button type="submit">Entrar</button>
+                        <button type="submit" class="success">Entrar</button>
                     </router-link>
                 </div>
 

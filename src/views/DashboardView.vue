@@ -2,20 +2,22 @@
 import Header from '@/components/layout/Header.vue'
 import SideNav from '@/components/layout/SideNav.vue'
 import Tasks from '@/components/task/Tasks.vue'
-import Modal from '@/components/elements/Modal.vue'
+import ModalCreate from '@/components/elements/ModalCreate.vue'
+import ModalDelete from '@/components/elements/ModalDelete.vue'
 import Bus from "@/bus"
 
 export default {
     name: 'DashboardView',
-    components: { Header, SideNav, Tasks, Modal },
+    components: { Header, SideNav, Tasks, ModalCreate, ModalDelete },
     created() {
-        Bus.$on('showModal', () => {
-            this.showModal()
+        Bus.$on('showModalCreate', () => {
+            this.showModalCreate()
         })
     },
     data() {
         return {
-            modalVisible: false,
+            modalCreateVisible: false,
+            modalDeleteVisible: true,
             tasks: [
                 { name: 'Planejar desenvolvimento do app.', category: '1', pending: true },
                 { name: 'Criar peojeto e configurar pacotes.', category: '2', pending: false },
@@ -26,11 +28,17 @@ export default {
         }
     },
     methods: {
-        showModal() {
-            this.modalVisible = true
+        showModalCreate() {
+            this.modalCreateVisible = true
         },
-        closeModal() {
-            this.modalVisible = false
+        closeModalCreate() {
+            this.modalCreateVisible = false
+        },
+        showModalDelete() {
+            this.modalDeleteVisible = true
+        },
+        closeModalDelete() {
+            this.modalDeleteVisible = false
         }
     }
 }
@@ -43,10 +51,11 @@ export default {
         </div>
         <div class="nav">
             <SideNav />
-            <Modal v-show="modalVisible" @close="closeModal"></Modal>
+            <ModalCreate v-show="modalCreateVisible" @close="closeModalCreate"></ModalCreate>
+            <ModalDelete v-show="modalDeleteVisible" @close="closeModalDelete"></ModalDelete>
         </div>
         <div class="main">
-            <Tasks :tasks="tasks" @showModal="showModal" />
+            <Tasks :tasks="tasks" @showModalCreate="showModalCreate" />
         </div>
     </div>
 </template>

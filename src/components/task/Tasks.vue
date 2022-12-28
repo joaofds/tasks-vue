@@ -15,8 +15,8 @@ export default {
         }
     },
     methods: {
-        showModal() {
-            Bus.$emit('showModal')
+        showModalCreate() {
+            Bus.$emit('showModalCreate')
         }
     }
 }
@@ -66,7 +66,7 @@ export default {
                 </template>
             </div>
         </div>
-        <button type="button" @click="showModal" class="float-button"><font-awesome-icon icon="plus" /></button>
+        <button type="button" @click="showModalCreate" class="float-button"><font-awesome-icon icon="plus" /></button>
     </div>
 </template>
 
