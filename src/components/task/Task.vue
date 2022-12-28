@@ -12,6 +12,10 @@ export default {
         }
     },
     methods: {
+        showModalEdit(task) {
+            console.log(task)
+            Bus.$emit('showModaledit', task)
+        },
         showModalDelete(task) {
             Bus.$emit('showModalDelete', task)
         }
@@ -58,7 +62,7 @@ export default {
                     <div class="dropdown-content">
                         <div class="list">
                             <ul>
-                                <li>Editar</li>
+                                <li @click="showModalEdit(task)">Editar</li>
                                 <li @click="showModalDelete(task)">Excluir</li>
                             </ul>
                         </div>

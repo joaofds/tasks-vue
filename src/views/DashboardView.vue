@@ -25,6 +25,11 @@ export default {
             this.deleteTask()
         })
 
+        // abre modal para edição.
+        Bus.$on('showModaledit', () => {
+            this.showModalCreate()
+        })
+
         // event bus que mostra modal de deleção de tarefa.
         Bus.$on('showModalDelete', (task) => {
             this.showModalDelete()
@@ -48,7 +53,7 @@ export default {
 
             taskToDelete: null,
             tasks: [
-                { name: 'Planejar desenvolvimento do app.', category: '1', pending: true },
+                { name: 'Planejar desenvolvimento do app.', description: '', category: '1', pending: true },
                 { name: 'Criar peojeto e configurar pacotes.', category: '2', pending: false },
                 { name: 'Montar telas HTML/CSS.', category: '2', pending: false },
                 { name: 'Separar componentes.', pending: false },

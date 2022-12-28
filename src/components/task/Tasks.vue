@@ -18,6 +18,28 @@ export default {
         showModalCreate() {
             Bus.$emit('showModalCreate')
         }
+    },
+    computed: {
+        // contagem de tasks urgentes.
+        taskCountUrgent() {
+            let total = 0
+            this.tasks.filter(task => {
+                if(task.category == 1) {
+                    total++
+                }
+            })
+            return total
+        },
+        // contagem de tasks importantes.
+        taskCountImportant() {
+            let total = 0
+            this.tasks.filter(task => {
+                if(task.category == 2) {
+                    total++
+                }
+            })
+            return total
+        }
     }
 }
 
@@ -34,7 +56,7 @@ export default {
                         <li>
                             Urgentes 
                             <span class="circle pink">
-                                <span class="couting">5</span>
+                                <span class="couting">{{ taskCountUrgent }}</span>
                             </span>
                         </li>
                     </a>
@@ -42,7 +64,7 @@ export default {
                         <li>
                             Importantes
                             <span class="circle yellow">
-                                <span class="couting">2</span>
+                                <span class="couting">{{ taskCountImportant }}</span>
                             </span>
                         </li>
                     </a>

@@ -3,6 +3,12 @@ import Bus from "@/bus"
 
 export default {
     name: 'ModalCreate',
+    created() {
+        Bus.$on('showModalEdit', (task) => {
+            console.log(task);
+            this.editTask(task)
+        })
+    },
     data() {
         return {
             task: {
@@ -14,6 +20,9 @@ export default {
         }
     },
     methods: {
+        editTask(task) {
+            this.task.name = task
+        },
         // emite a task criada para o bus.
         emitTask() {
             Bus.$emit('task', this.taskToEmit)
