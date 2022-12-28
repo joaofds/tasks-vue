@@ -16,21 +16,36 @@ export default {
     methods: {
         // emite a task criada para o bus.
         emitTask() {
-            Bus.$emit('task', this.task)
+            Bus.$emit('task', this.taskToEmit)
 
             // fecha modal
             this.close()
 
             // limpa campos
-            // this.task.name = ""
-            // this.task.description = ""
-            // this.task.category = null
+            this.resetForm()
+        },
+        // reseta o formulario
+        resetForm() {
+            this.task.name = ""
+            this.task.description = ""
+            this.task.category = null
         },
         // acao para fechar modal
         close() {
             this.$emit('close');
         },
     },
+    computed: {
+        taskToEmit() {
+            return {
+                name: this.task.name,
+                description: this.task.description,
+                category: this.task.category,
+                pending: this.task.pending
+                
+            }
+        }
+    }
 };
 </script>
 
