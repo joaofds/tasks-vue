@@ -9,13 +9,15 @@
         created() {
             let storage = localStorage.getItem('tasks')
             if(!storage) {
-                // tasks
+                // tasks para storage
                 let tasks = [
                     { name: 'Planejar desenvolvimento do app.', description: '', category: '1', pending: false },
                     { name: 'Criar peojeto e configurar pacotes.', category: '2', pending: false },
                     { name: 'Montar telas HTML/CSS.', category: '2', pending: false },
                     { name: 'Separar componentes.', pending: false }, 
-                    { name: 'Fazer a lógica javascript dos componentes.', pending: false }
+                    { name: 'Fazer a lógica javascript dos componentes.', pending: false },
+                    { name: 'Uma tarega urgente.', description: '', category: '1', pending: false },
+                    { name: 'Outra tarefa urgente.', description: '', category: '1', pending: false }
                 ]
 
                 localStorage.setItem('tasks', JSON.stringify(tasks))

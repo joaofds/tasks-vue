@@ -93,7 +93,7 @@ export default {
                 this.tasks[index].pending = !this.tasks[index].pending
             }
 
-            // para manter storage atualizado
+            // mantém storage atualizado.
             this.updateStorage()
         },
         updateStorage() {
@@ -105,12 +105,19 @@ export default {
         // filtro de busca
         taskFilter() {
             let myTempTasks = this.tasks
-
             if(this.searchValue != '' && this.searchValue) {
                 myTempTasks = myTempTasks.filter((task) => {
                     return task.name.toUpperCase().includes(this.searchValue.toUpperCase())
                 })
+
             }
+
+            // ordena por prioridade (task.category)
+            myTempTasks = myTempTasks.sort((a, b) => {
+                if(a.category == 1) {
+                   return -1 
+                }
+            })
 
             return myTempTasks
         }
