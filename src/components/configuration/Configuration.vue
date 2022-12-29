@@ -17,13 +17,12 @@ export default {
 
 <template>
     <div class="content">
-            <h1>Configurações</h1>
-            <p>Aqui você pode implementar diversas configurações globais.</p>
+        <h1>Configurações</h1>
+        <p>Aqui você pode implementar diversas configurações globais.</p>
     </div>
 </template>
 
 <style lang="stylus" scoped>
-// CONTEUDO
 .content
     width: 100%
     height: 100vh

@@ -16,22 +16,16 @@ export default {
 </script>
 
 <template>
-    <div class="wrapp">
-        <div class="content">
-            <div class="info-text">
-                <h1>Dashboard</h1>
-                <p>Seja bem vindo ao seu dashboard!</p>
-            </div>
-        </div>
+    <div class="content">
+        <h1>Dashboard</h1>
+        <p>Seja bem vindo ao seu dashboard!</p>
     </div>
 </template>
 
 <style lang="stylus" scoped> 
-.wrapp
-    display: flex
-
-// CONTEUDO
 .content
+    width: 100%
+    height: 100vh
     background-color: #E9F4FB
     display: flex
     align-items: center
