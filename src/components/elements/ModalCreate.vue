@@ -118,7 +118,12 @@ export default {
                         </slot>
                     </div>
                     <div class="buttons">
-                        <button @click="emitTask" type="submit" class="success">
+                        <button 
+                            @click="emitTask"
+                            type="submit"
+                            class="success"
+                            :disabled="!this.task.name || !this.task.description"
+                        >
                             Salvar
                         </button>
                     </div>

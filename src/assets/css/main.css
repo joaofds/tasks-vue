@@ -55,7 +55,11 @@ button[type=button]:focus {
 }
 
 button[type=submit]:active {
-  border: #18a06e 2px solid;
+  border: none;
+}
+
+button:disabled {
+  background-color: #BFDAEB;
 }
 
 .form-display {
