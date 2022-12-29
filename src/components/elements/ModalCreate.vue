@@ -4,12 +4,15 @@ import Bus from "@/bus"
 export default {
     name: 'ModalCreate',
     created() {
-        Bus.$on('showModalEdit', (task) => {
+        Bus.$on('editTask', task => {
+            this.updateButton = true
             this.editTask(task)
         })
     },
     data() {
         return {
+            updateButton: false,
+
             task: {
                 name: "",
                 description: "",
@@ -20,7 +23,10 @@ export default {
     },
     methods: {
         editTask(task) {
-            this.task.name = task
+            this.task.name = task.name
+            this.task.description = task.description
+            this.task.category = task.category
+            this.task.pending = task.pending
         },
         // emite a task criada para o bus.
         emitTask() {
@@ -41,6 +47,7 @@ export default {
         // acao para fechar modal
         close() {
             this.$emit('close');
+            this.resetForm()
         },
     },
     computed: {
@@ -118,13 +125,23 @@ export default {
                         </slot>
                     </div>
                     <div class="buttons">
-                        <button 
+                        <button
+                            v-show="!updateButton" 
                             @click="emitTask"
                             type="submit"
                             class="success"
                             :disabled="!this.task.name || !this.task.description"
                         >
                             Salvar
+                        </button>
+
+                        <button
+                            v-show="updateButton"
+                            type="submit"
+                            class="primary"
+                            :disabled="!this.task.name || !this.task.description"
+                        >
+                            Atualizar
                         </button>
                     </div>
                 </footer>

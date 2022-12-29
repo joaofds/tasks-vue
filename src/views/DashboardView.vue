@@ -26,7 +26,8 @@ export default {
         })
 
         // abre modal para edição.
-        Bus.$on('showModaledit', () => {
+        Bus.$on('showModaledit', task => {
+            Bus.$emit('editTask', task)
             this.showModalCreate()
         })
 
