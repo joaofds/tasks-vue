@@ -24,6 +24,7 @@ export default {
         // mostra modal de cadastro de nova task
         showModalCreate() {
             Bus.$emit('showModalCreate')
+            Bus.$emit('disableUpdateButton')
         }
     },
     computed: {

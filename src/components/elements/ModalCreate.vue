@@ -4,9 +4,15 @@ import Bus from "@/bus"
 export default {
     name: 'ModalCreate',
     created() {
+        // recebe tarefa a ser editada.
         Bus.$on('editTask', task => {
             this.updateButton = true
             this.editTask(task)
+        })
+
+        // oculta botão "Atualizar".
+        Bus.$on('disableUpdateButton', () => {
+            this.updateButton = false
         })
     },
     data() {
@@ -22,6 +28,7 @@ export default {
         }
     },
     methods: {
+        // preenche dados da tarefa a ser editada.
         editTask(task) {
             this.task.name = task.name
             this.task.description = task.description
