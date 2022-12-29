@@ -16,19 +16,15 @@ export default {
 
         // recebe a task do bus emitida pelo modal e insere no array.
         Bus.$on('task', data => {
-            console.log(data);
             if(!data.edit) {
-                console.log('cria nova');
                 this.addTask(data.task)
             } else {
-                console.log('edita existente');
                 this.updateTask(data.task)
             }
         })
 
         // deleta uma task.
-        Bus.$on('deleteTask', task => {
-            this.taskToDelete = task
+        Bus.$on('deleteTask', () => {
             this.deleteTask()
         })
 
@@ -36,12 +32,13 @@ export default {
         Bus.$on('showModaledit', task => {
             const index = this.tasks.indexOf(task)
 
-            Bus.$emit('editTask', { task, index})
+            Bus.$emit('editTask', { task, index })
             this.showModalCreate()
         })
 
         // event bus que mostra modal de deleção de tarefa.
-        Bus.$on('showModalDelete', (task) => {
+        Bus.$on('showModalDelete', task => {
+            this.taskToDelete = task
             this.showModalDelete()
         })
 
