@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import LoginView from "../views/LoginView.vue";
-import DashboardView from "../views/DashboardView.vue";
+import HomeView from "../views/HomeView.vue";
 
 Vue.use(VueRouter);
 
@@ -24,7 +24,7 @@ const router = new VueRouter({
     {
       path: "/dashboard",
       name: "dashboard",
-      component: DashboardView,
+      component: HomeView,
     },
   ],
 });

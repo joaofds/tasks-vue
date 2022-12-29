@@ -2,13 +2,15 @@
 import Header from '@/components/layout/Header.vue'
 import SideNav from '@/components/layout/SideNav.vue'
 import Tasks from '@/components/task/Tasks.vue'
+import Configuration from '@/components/configuration/Configuration.vue'
+import Dashboard from '@/components/dashboard/Dashboard.vue'
 import ModalCreate from '@/components/elements/ModalCreate.vue'
 import ModalDelete from '@/components/elements/ModalDelete.vue'
 import Bus from "@/bus"
 
 export default {
-    name: 'DashboardView',
-    components: { Header, SideNav, Tasks, ModalCreate, ModalDelete },
+    name: 'HomeView',
+    components: { Header, SideNav, Tasks, ModalCreate, ModalDelete, Dashboard, Configuration },
     created() {
         // busca tasks json no storage e atribui ao array de tasks do vue.
         const tasks = localStorage.getItem('tasks')
@@ -152,6 +154,8 @@ export default {
             <ModalDelete v-show="modalDeleteVisible" @close="closeModalDelete"></ModalDelete>
         </div>
         <div class="main">
+            <Dashboard />
+            <Configuration />
             <Tasks :tasks="taskFilter" @showModalCreate="showModalCreate" />
         </div>
     </div>
@@ -174,4 +178,7 @@ export default {
 .nav
     position: relative
     z-index: 3
+
+.main
+    width: 100%
 </style>
