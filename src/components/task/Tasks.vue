@@ -10,6 +10,7 @@ export default {
         tasks: { type: Array, required: true }
     },
     watch: {
+        // passa valor do input pelo bus.
         searchValue(value) {
             Bus.$emit('searchValue', value)
         }
@@ -41,6 +42,16 @@ export default {
             let total = 0
             this.tasks.filter(task => {
                 if(task.category == 2) {
+                    total++
+                }
+            })
+            return total
+        },
+        // contagem de tasks pendentes.
+        taskCountPending() {
+            let total = 0
+            this.tasks.filter(task => {
+                if(task.pending) {
                     total++
                 }
             })
@@ -82,7 +93,7 @@ export default {
         <div class="right-content">
             <div class="info-text">
                 <h1>Minhas Tarefas</h1>
-                <p>Olá <span>João Ferreira</span>, você tem <span>4 tarefas</span> pendentes.</p>
+                <p>Olá <span>João Ferreira</span>, você tem <span>{{ taskCountPending }} tarefa(s)</span> pendentes.</p>
                 <div class="search-content">
                     <font-awesome-icon icon="search" />
                     <input

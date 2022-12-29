@@ -10,15 +10,6 @@ export default {
     name: 'DashboardView',
     components: { Header, SideNav, Tasks, ModalCreate, ModalDelete },
     created() {
-        // tasks
-        this.tasks = [
-            { name: 'Planejar desenvolvimento do app.', description: '', category: '1', pending: false },
-            { name: 'Criar peojeto e configurar pacotes.', category: '2', pending: false },
-            { name: 'Montar telas HTML/CSS.', category: '2', pending: false },
-            { name: 'Separar componentes.', pending: false }, 
-            { name: 'Fazer a lógica javascript dos componentes.', pending: false }
-        ]
-
         // busca tasks json no storage e atribui ao array de tasks do vue.
         const tasks = localStorage.getItem('tasks')
         this.tasks = JSON.parse(tasks) || []
@@ -60,7 +51,7 @@ export default {
     watch: {
         // monitora this.tasks para manter o localStorage atualizado.
         tasks() {
-            localStorage.setItem('tasks', JSON.stringify(this.tasks))
+            this.updateStorage()
         }
     },
     data() {
@@ -97,8 +88,17 @@ export default {
             this.modalDeleteVisible = false
         },
         taskToggleState(task) {
-            const index = this.tasks.indexOf(task)
-            this.tasks[index].pending = !this.tasks[index].pending
+            if(task) {
+                const index = this.tasks.indexOf(task)
+                this.tasks[index].pending = !this.tasks[index].pending
+            }
+
+            // para manter storage atualizado
+            this.updateStorage()
+        },
+        updateStorage() {
+            localStorage.removeItem("tasks");
+            localStorage.setItem('tasks', JSON.stringify(this.tasks))
         }
     },
     computed: {

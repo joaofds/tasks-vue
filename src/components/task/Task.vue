@@ -12,12 +12,15 @@ export default {
         }
     },
     methods: {
+        // mostra modal para edição
         showModalEdit(task) {
             Bus.$emit('showModaledit', task)
         },
+        // mostra modal para deleção.
         showModalDelete(task) {
             Bus.$emit('showModalDelete', task)
         },
+        // emit para estado da task de acordo com o checkbox.
         emitTaskPendingState(task) {
             Bus.$emit('toggleTaskState', task)
         }
@@ -110,7 +113,7 @@ black = #283848
 .task-info label
     color: black
     font-weight: bold
-    
+
 .task-info
     padding: 12px
 
