@@ -5,9 +5,15 @@ export default {
     name: 'ModalCreate',
     created() {
         // recebe tarefa a ser editada.
-        Bus.$on('editTask', task => {
+        Bus.$on('editTask', data => {
+
+            // mostra botao Atualizar.
             this.updateButton = true
-            this.editTask(task)
+
+            // guarda index da task atual.
+            this.taskIndexToEdit = data.index
+            
+            this.editTask(data.task)
         })
 
         // oculta botão "Atualizar".
@@ -18,6 +24,7 @@ export default {
     data() {
         return {
             updateButton: false,
+            taskIndexToEdit: null,
 
             task: {
                 name: "",
@@ -37,13 +44,9 @@ export default {
         },
         // emite a task criada para o bus.
         emitTask() {
-            Bus.$emit('task', this.taskToEmit)
+            Bus.$emit('task', { task: this.taskToEmit, edit: this.updateButton })
 
-            // fecha modal
             this.close()
-
-            // limpa campos
-            this.resetForm()
         },
         // reseta o formulario
         resetForm() {
@@ -51,7 +54,7 @@ export default {
             this.task.description = ""
             this.task.category = null
         },
-        // acao para fechar modal
+        // fecha e limpa campos
         close() {
             this.$emit('close');
             this.resetForm()
@@ -63,7 +66,8 @@ export default {
                 name: this.task.name,
                 description: this.task.description,
                 category: this.task.category,
-                pending: this.task.pending
+                pending: this.task.pending,
+                index: this.taskIndexToEdit
                 
             }
         }
@@ -144,6 +148,7 @@ export default {
 
                         <button
                             v-show="updateButton"
+                            @click="emitTask"
                             type="submit"
                             class="primary"
                             :disabled="!this.task.name || !this.task.description"

@@ -15,8 +15,15 @@ export default {
         this.tasks = JSON.parse(tasks) || []
 
         // recebe a task do bus emitida pelo modal e insere no array.
-        Bus.$on('task', task => {
-            this.addTask(task)
+        Bus.$on('task', data => {
+            console.log(data);
+            if(!data.edit) {
+                console.log('cria nova');
+                this.addTask(data.task)
+            } else {
+                console.log('edita existente');
+                this.updateTask(data.task)
+            }
         })
 
         // deleta uma task.
@@ -27,7 +34,9 @@ export default {
 
         // abre modal para edição.
         Bus.$on('showModaledit', task => {
-            Bus.$emit('editTask', task)
+            const index = this.tasks.indexOf(task)
+
+            Bus.$emit('editTask', { task, index})
             this.showModalCreate()
         })
 
@@ -67,7 +76,14 @@ export default {
     },
     methods: {
         addTask(task) {
+            delete task.index
             this.tasks.push(task)
+        },
+        updateTask(task) {
+            this.tasks[task.index].name = task.name
+            this.tasks[task.index].description = task.description
+            this.tasks[task.index].category = task.category
+            this.tasks[task.index].pending = task.pending
         },
         deleteTask() {
             const index = this.tasks.indexOf(this.taskToDelete)
@@ -88,6 +104,7 @@ export default {
         closeModalDelete() {
             this.modalDeleteVisible = false
         },
+        // altera estado de pendente/finalizada de acordo com checkbox.
         taskToggleState(task) {
             if(task) {
                 const index = this.tasks.indexOf(task)
@@ -97,6 +114,7 @@ export default {
             // mantém storage atualizado.
             this.updateStorage()
         },
+        // atualiza dados no storage.
         updateStorage() {
             localStorage.removeItem("tasks");
             localStorage.setItem('tasks', JSON.stringify(this.tasks))
