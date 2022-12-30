@@ -58,7 +58,6 @@ export default {
         })
 
         Bus.$on('navMenuChange', value => {
-            console.log(value);
             this.navMenuActive = value
         })
     },
