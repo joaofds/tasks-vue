@@ -1,9 +1,16 @@
 <script>
+import Bus from "@/bus"
+
 export default {
     name: 'SideNav',
+    watch: {
+        activeLink() {
+            Bus.$emit('navMenuChange', this.activeLink)
+        }
+    },
     data() {
         return {
-            activeLink: null
+            activeLink: 'dashboard'
         }
     }
 }

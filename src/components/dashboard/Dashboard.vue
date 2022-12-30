@@ -17,12 +17,17 @@ export default {
 
 <template>
     <div class="content">
-        <h1>Dashboard</h1>
-        <p>Seja bem vindo ao seu dashboard!</p>
+        <div class="info-text">
+            <h1>Dashboard</h1>
+            <p>Seja bem vindo ao seu dashboard!</p>
+        </div>
     </div>
 </template>
 
 <style lang="stylus" scoped> 
+black = #283848
+gray = #77899E
+
 .content
     width: 100%
     height: 100vh
@@ -33,7 +38,6 @@ export default {
     flex-direction: column
 
 .content h1
-.content span
     font-weight: 600
     color: black
 

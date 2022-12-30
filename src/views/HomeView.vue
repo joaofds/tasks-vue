@@ -56,6 +56,11 @@ export default {
         Bus.$on('searchValue', value => {
             this.searchValue = value
         })
+
+        Bus.$on('navMenuChange', value => {
+            console.log(value);
+            this.navMenuActive = value
+        })
     },
     watch: {
         // monitora this.tasks para manter o localStorage atualizado.
@@ -70,7 +75,9 @@ export default {
 
             searchValue: '',
             taskToDelete: null,
-            tasks: []
+            tasks: [],
+
+            navMenuActive: 'dashboard'
         }
     },
     methods: {
@@ -154,9 +161,20 @@ export default {
             <ModalDelete v-show="modalDeleteVisible" @close="closeModalDelete"></ModalDelete>
         </div>
         <div class="main">
-            <Dashboard />
-            <Configuration />
-            <Tasks :tasks="taskFilter" @showModalCreate="showModalCreate" />
+            <Dashboard 
+                v-if="navMenuActive == 'dashboard'" 
+            />
+
+            <Tasks
+                v-else-if="navMenuActive == 'tasks'" 
+                :tasks="taskFilter"
+                @showModalCreate="showModalCreate" 
+            />
+
+
+            <Configuration
+                v-else-if="navMenuActive == 'config'" 
+            />
         </div>
     </div>
 </template>

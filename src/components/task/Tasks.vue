@@ -64,7 +64,7 @@ export default {
 </script>
 
 <template>
-    <div class="wrapp">
+    <div>
         <div class="left-content">
             <div class="categories">
                 <p>Categorias</p>
@@ -130,19 +130,17 @@ gray = #77899E
     background-color: yellow
     
 a
-    text-decoration: none
-    
-.wrapp
-    display: flex
+    text-decoration: none 
 
 // CONTEUDO DO LADO ESQUERDO
 .left-content
     width: 277px
     height: 100vh
+    float: left
+    background-color: #F4FBFF
     display: flex
     align-items: center
     justify-content: center
-    background-color: #F4FBFF
 
 .left-content p
     font-size: 18px
@@ -193,7 +191,7 @@ a
 
 // CONTEUDO DO LADO DIREITO
 .right-content
-    width: 80vw
+    height: 100vh
     background-color: #E9F4FB
     display: flex
     align-items: center
