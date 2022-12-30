@@ -19,7 +19,14 @@ export default {
 <template>
     <div class="wrapp">
         <nav>
-            <div class="logo"><img src="@/assets/images/logo.svg" alt="logo"></div>
+            <div class="logo">
+                <img 
+                    @click="activeLink = 'dashboard'"
+                    src="@/assets/images/logo.svg" 
+                    alt="logo"
+                >
+            </div>
+            
             <div class="nav-links">
                 <a href="#" @click="activeLink = 'dashboard'" :class="{'active': activeLink === 'dashboard'}">
                     <font-awesome-icon icon="chart-column" />
@@ -50,6 +57,7 @@ nav
 .logo
     margin-top: 1em
     margin-bottom: auto
+    cursor: pointer
     display: flex
     align-items: center
     justify-content: center
