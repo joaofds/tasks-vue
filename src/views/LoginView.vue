@@ -28,7 +28,7 @@
 </script>
 
 <template>
-    <div class="wrapp">
+    <div>
         <div class="left-side">
             <div class="content">
                 <div class="logo"><img src="../assets/images/logo.svg" alt="logo"></div>
@@ -78,12 +78,10 @@
 black = #283848
 gray = #4E657B
 
-.wrapp
-    display: flex
-
 .left-side
     width: 624px
     height: 100vh
+    float: left
     background-color: #2693FF
     color: #fff
     display: flex
@@ -106,7 +104,7 @@ gray = #4E657B
     font-weight: 350
 
 .right-side
-    width: 70vw
+    height: 100vh
     display: flex
     align-items: center
     justify-content: center

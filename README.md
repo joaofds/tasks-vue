@@ -1,6 +1,12 @@
 # tasks
 
-This template should help get you started developing with Vue 3 in Vite.
+CRUD de tarefas VueJS
+
+- Listar tarefas
+- Adicionar tarefa
+- Excluir tarefa
+- Marcar tarefa como concluída
+- Buscar tarefas pelo título
 
 ## Recommended IDE Setup
 
