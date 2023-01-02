@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="form-display">
-                    <router-link to="/dashboard">
+                    <router-link to="/home">
                         <button type="submit" class="success">Entrar</button>
                     </router-link>
                 </div>
